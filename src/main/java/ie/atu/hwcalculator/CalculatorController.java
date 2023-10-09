@@ -14,11 +14,11 @@ public class CalculatorController {
             @RequestParam("operation") String operation) {
 
         return switch(operation) {
-            case "add" : new CalculatorData(num1 + num2, operation); break;
-            case "subtract" : new CalculatorData(num1 - num2, operation); break;
-            case "multiply" : new CalculatorData(num1 * num2, operation); break;
-            case "divide" : new CalculatorData(num1 / num2, operation); break;
-            default : new CalculatorData("Not Valid"); break;
+            case "add" -> new CalculatorData(num1 + num2, operation);
+            case "subtract" -> new CalculatorData(num1 - num2, operation);
+            case "multiply" -> new CalculatorData(num1 * num2, operation);
+            case "divide" -> new CalculatorData((float)num1 / num2, operation);
+            default -> throw new IllegalArgumentException("Invalid Operation" + operation);
         };
     }
 }
