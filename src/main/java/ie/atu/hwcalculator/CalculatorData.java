@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CalculatorData {
-    private float result;
-    private String total;
+    private float total;
+    private String operation;
 }
