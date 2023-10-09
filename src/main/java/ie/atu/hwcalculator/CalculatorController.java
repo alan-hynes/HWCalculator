@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorController {
 
     @GetMapping("/calculate")
-    public CalculatorData calculate(@RequestParam int num1, int num2, String operation) {
-        switch(operation) {
-            case "add" : num1 + num2;
-            case "subtract" : num1 - num2;
-            case "multiply" : num1 * num2;
-            case "divide" : num1 / num2;
-            default : "Not valid";
-        }
+    public CalculatorData calculate(
+            @RequestParam("num1") int num1,
+            @RequestParam("num2") int num2,
+            @RequestParam("operation") String operation) {
+
+        return switch(operation) {
+            case "add" : new CalculatorData(num1 + num2, operation); break;
+            case "subtract" : new CalculatorData(num1 - num2, operation); break;
+            case "multiply" : new CalculatorData(num1 * num2, operation); break;
+            case "divide" : new CalculatorData(num1 / num2, operation); break;
+            default : new CalculatorData("Not Valid"); break;
+        };
     }
 }
